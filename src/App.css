@@ -1,0 +1,95 @@
+@import-normalize;
+
+:root {
+  
+  --primary-font: 'Arial, sans-serif';
+  --secondary-font: 'Georgia, serif';
+  --base-font-size: 16px;
+  --small-font-size: 14px;
+  --large-font-size: 20px;
+
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: white;
+  --text-color: black;
+
+  --base-padding: 16px;
+  --small-padding: 8px;
+  --large-padding: 24px;
+
+  --base-margin: 16px;
+  --small-margin: 8px;
+  --large-margin: 24px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: var(--primary-font);
+  font-size: var(--base-font-size);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+}
+
+
+.container {
+  padding: var(--base-padding);
+  margin: var(--base-margin);
+}
+
+
+.mt-sm {
+  margin-top: var(--small-margin);
+}
+.mt-lg {
+  margin-top: var(--large-margin);
+}
+.p-sm {
+  padding: var(--small-padding);
+}
+.p-lg {
+  padding: var(--large-padding);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--base-margin);
+  font-family: var(--secondary-font);
+}
+
+button {
+  font-family: var(--primary-font);
+  padding: var(--small-padding) var(--base-padding);
+  font-size: var(--small-font-size);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: 'Parkinsans';
+  src: url('./Assets/Fonts/Parkinsans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family:'Parkinsans' ;
+  src: url('./Assets/Fonts/Parkinsans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Parkinsans';
+  src: url('./Assets/Fonts/Parkinsans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
