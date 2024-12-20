@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './ComponentsA.css';
-import Logo from '../Assets/SchLogo.png';
+import "./ComponentsA.css";
+import Logo from "../Assets/SchLogo.png";
 
 const NavBar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false); // State to track hamburger menu visibility
+  const [menuOpen, setMenuOpen] = useState(false); // Track hamburger menu visibility
 
   const menuItems = [
     {
@@ -33,67 +33,61 @@ const NavBar = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-    setActiveMenu(null);
+    setActiveMenu(null); // Close any open submenus when toggling the main menu
   };
 
   return (
     <nav className="navbar">
       <div className="navBarLogo">
-        <Link to='/'>
+        <Link to="/">
           <img src={Logo} alt="School Logo" />
         </Link>
       </div>
-
       {/* Hamburger Button */}
       <div className="hamburger" onClick={toggleMenu}>
-        {menuOpen ? (
-          <span className="cancel-icon">✖</span>
-        ) : (
+        {!menuOpen ? (
           <>
             <span className="line"></span>
             <span className="line"></span>
             <span className="line"></span>
           </>
+        ) : (
+          <span className="cancel-icon">✖</span>
         )}
       </div>
-
       {/* Menu */}
       <ul className={`menu ${menuOpen ? "open" : ""}`}>
         {menuItems.map((item, index) => (
-          <li
-            key={index}
-            className="menu-item"
-            onClick={menuOpen ? closeMenu : null} // Close menu on item click
-          >
+          <li key={index} className="menu-item">
             {item.submenu ? (
               <span
                 className="menu-link"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleSubmenu(index);
-                }}
+                onClick={() => toggleSubmenu(index)}
               >
                 {item.name}
               </span>
             ) : (
-              <Link to={item.link} className="menu-link">
+              <Link
+                to={item.link}
+                className="menu-link"
+                onClick={() => setMenuOpen(false)} // Close menu when a link is clicked
+              >
                 {item.name}
               </Link>
             )}
 
+            {/* Submenu */}
             {item.submenu && (
-              <ul className={`submenu ${activeMenu === index ? "show" : ""}`}>
+              <ul
+                className={`submenu ${activeMenu === index ? "show" : ""}`}
+              >
                 {item.submenu.map((subItem, subIndex) => (
-                  <li
-                    key={subIndex}
-                    className="submenu-item"
-                    onClick={closeMenu} // Close menu on submenu item click
-                  >
-                    <Link to={subItem.link} className="submenu-link">
+                  <li key={subIndex} className="submenu-item">
+                    <Link
+                      to={subItem.link}
+                      className="submenu-link"
+                      onClick={() => setMenuOpen(false)} // Close menu on submenu click
+                    >
                       {subItem.name}
                     </Link>
                   </li>
@@ -108,3 +102,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
